@@ -20,8 +20,6 @@
       instance = this;
     }
 
-    Broadcaster.fn = Broadcaster.prototype = {};
-
     /**
      * Adds a listener function to respond the specified event
      *
@@ -31,7 +29,7 @@
      * @returns {Function} The listener provided
      */
 
-    Broadcaster.fn.addListener = Broadcaster.fn.on = function(event, listener) {
+    Broadcaster.prototype.addListener = Broadcaster.prototype.on = function(event, listener) {
       if(typeof events[event] === 'undefined' || events[event] === null)
         events[event] = { maxListeners: -1, listeners: [] };
       if(typeof listener !== 'function')
@@ -51,7 +49,7 @@
      * @param {Function} listener Listener to run only once on when the event fires
      */
 
-    Broadcaster.fn.once = function(event, listener) {
+    Broadcaster.prototype.once = function(event, listener) {
       var self = this;
       return this.addListener(event, function wrapper(data) {
         listener(data);
@@ -67,7 +65,7 @@
      * @returns {Boolean} Success or failure of event listener removal
      */
 
-    Broadcaster.fn.removeListener = function(listener) {
+    Broadcaster.prototype.removeListener = function(listener) {
       for(var event in events) {
         if(events.hasOwnProperty(event)) {
           for(var i = 0, il = events[event].listeners.length; i < il; i ++) {
@@ -89,7 +87,7 @@
      * @returns {Array} 
      */
 
-    Broadcaster.fn.listeners = function(event) {
+    Broadcaster.prototype.listeners = function(event) {
       if(typeof event !== 'undefined' && event !== null)
         return events[event].listeners;
     };
@@ -100,7 +98,7 @@
      * @returns {Array}
      */
 
-    Broadcaster.fn.events = function() {
+    Broadcaster.prototype.events = function() {
       var list = [];
       for(var event in events) {
         list.push(event);
@@ -115,7 +113,7 @@
      * @param {Number} max The maximum number of listeners an event have
      */
 
-    Broadcaster.fn.setMaxListeners = function(event, max) {
+    Broadcaster.prototype.setMaxListeners = function(event, max) {
       if(events[event]) {
         events[event].maxListeners = max;
         return max;
@@ -129,7 +127,7 @@
      * @param {String|Number|Array|Object|Boolean} data The data to pass to listener functions
      */
 
-    Broadcaster.fn.emit = function(event, data) {
+    Broadcaster.prototype.emit = function(event, data) {
       if(!events[event]) return;
       for(var i = 0, il = events[event].listeners.length; i < il; i++)
         if(typeof events[event].listeners[i] === 'function')
