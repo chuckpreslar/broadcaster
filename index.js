@@ -125,12 +125,10 @@
      */
 
     Broadcaster.prototype.emit = function() {
-      var event = arguments[0];
-      if(!events[event]) return;
-      [].splice.call(arguments, 0, 1);
-      for(var i = 0, il = events[event].listeners.length; i < il; i++)
-        if(typeof events[event].listeners[i] === 'function')
-          events[event].listeners[i].apply(this, arguments);
+      if(!events[arguments[0]]) return;
+      for(var i = 0, il = events[arguments[0]].listeners.length; i < il; i++)
+        if(typeof events[arguments[0]].listeners[i] === 'function')
+          events[arguments[0]].listeners[i].apply(this, [].slice.call(arguments, 1));
     };
 
     return Broadcaster;
