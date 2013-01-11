@@ -1,11 +1,11 @@
 {
-  "name": "Link",
+  "name": "broadcaster",
   "description": "Singleton event emitter for inter-application communication.",
   "version": "1.0.4",
   "author": "Chuck Preslar <me@chuckpreslar.com> (http://www.chuckpreslar.com)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/page.js.git"
+    "url": "git://github.com/chuckpreslar/link.git"
   },
   "component": {
     "scripts": {

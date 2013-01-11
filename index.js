@@ -1,26 +1,26 @@
 ;(function() {
 
-  var Link = (function() {
+  var Broadcaster = (function() {
 
-    /* Singleton instance of the Link */
+    /* Singleton instance of the Broadcaster */
 
     var instance, events = {};
 
     /**
-     * Event Link to be used for interapplication communication
+     * Event Broadcaster to be used for interapplication communication
      *
      * @constructor
      */
 
-    function Link() {
+    function Broadcaster() {
       if(typeof instance !== 'undefined' && instance !== null) 
         return instance;
-      if(!(this instanceof Link))
-        return new Link();
+      if(!(this instanceof Broadcaster))
+        return new Broadcaster();
       instance = this;
     }
 
-    Link.fn = Link.prototype = {};
+    Broadcaster.fn = Broadcaster.prototype = {};
 
     /**
      * Adds a listener function to respond the specified event
@@ -31,11 +31,11 @@
      * @returns {Function} The listener provided
      */
 
-    Link.fn.addListener = Link.fn.on = function(event, listener) {
+    Broadcaster.fn.addListener = Broadcaster.fn.on = function(event, listener) {
       if(typeof events[event] === 'undefined' || events[event] === null)
         events[event] = { maxListeners: -1, listeners: [] };
       if(typeof listener !== 'function')
-        throw new Error('Link#addListener expects an event name and listener as parameters.');
+        throw new Error('Broadcaster#addListener expects an event name and listener as parameters.');
       if(!~events[event].maxListeners || event[event].listeners.length < event[event].maxListeners)
         events[event].listeners.push(listener);
       else
@@ -51,7 +51,7 @@
      * @param {Function} listener Listener to run only once on when the event fires
      */
 
-    Link.fn.once = function(event, listener) {
+    Broadcaster.fn.once = function(event, listener) {
       var self = this;
       return this.addListener(event, function wrapper(data) {
         listener(data);
@@ -67,7 +67,7 @@
      * @returns {Boolean} Success or failure of event listener removal
      */
 
-    Link.fn.removeListener = function(listener) {
+    Broadcaster.fn.removeListener = function(listener) {
       for(var event in events) {
         if(events.hasOwnProperty(event)) {
           for(var i = 0, il = events[event].listeners.length; i < il; i ++) {
@@ -89,7 +89,7 @@
      * @returns {Array} 
      */
 
-    Link.fn.listeners = function(event) {
+    Broadcaster.fn.listeners = function(event) {
       if(typeof event !== 'undefined' && event !== null)
         return events[event].listeners;
     };
@@ -100,7 +100,7 @@
      * @returns {Array}
      */
 
-    Link.fn.events = function() {
+    Broadcaster.fn.events = function() {
       var list = [];
       for(var event in events) {
         list.push(event);
@@ -115,7 +115,7 @@
      * @param {Number} max The maximum number of listeners an event have
      */
 
-    Link.fn.setMaxListeners = function(event, max) {
+    Broadcaster.fn.setMaxListeners = function(event, max) {
       if(events[event]) {
         events[event].maxListeners = max;
         return max;
@@ -129,23 +129,23 @@
      * @param {String|Number|Array|Object|Boolean} data The data to pass to listener functions
      */
 
-    Link.fn.emit = function(event, data) {
+    Broadcaster.fn.emit = function(event, data) {
       if(!events[event]) return;
       for(var i = 0, il = events[event].listeners.length; i < il; i++)
         if(typeof events[event].listeners[i] === 'function')
           events[event].listeners[i](data);
     };
 
-    return Link;
+    return Broadcaster;
   }())
 
   if(typeof module !== 'undefined' && module.exports)
-    module.exports = Link;
+    module.exports = Broadcaster;
   else if(typeof define === 'function' && define.amd)
-    define('Link', function() { return Link });
+    define('Broadcaster', function() { return Broadcaster });
   else if(typeof provide === 'function')
-    provide('Link', Link);
+    provide('Broadcaster', Broadcaster);
   else
-    window.Link = Link;
+    window.Broadcaster = Broadcaster;
 
 }())
