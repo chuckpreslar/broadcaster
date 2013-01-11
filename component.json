@@ -1,0 +1,9 @@
+{
+  "name": "Link",
+  "description": "Singleton event emitter for inter-application communication.",
+  "version": "1.0.4",
+  "scripts": [
+    "index.js"
+  ],
+  "license": "MIT"
+}
