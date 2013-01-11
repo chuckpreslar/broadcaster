@@ -2,12 +2,6 @@ var expect = chai.expect;
 
 
 describe('Broadcaster', function() {
-  var broadcaster = new Broadcaster()
-  
-  it('should be the same instance everytime it is instantiated.', function(done) {
-    expect(broadcaster).to.equal(new Broadcaster());
-    done();
-  });
 
   describe('#addListener, #on', function() {
     var listener = function() {};

@@ -18,5 +18,5 @@ And when ready to use:
 Ready for usage with [RequireJS](https://github.com/jrburke/requirejs) and [Ender](https://github.com/ender-js/Ender).
 
 ```js
-var emitter = (new require('broadcaster')()); 
+var emitter = require('broadcaster'); 
 ```

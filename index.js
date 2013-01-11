@@ -1,6 +1,6 @@
 ;(function() {
 
-  var Broadcaster = (function() {
+  var broadcaster = (function() {
 
     /* Singleton instance of the Broadcaster */
 
@@ -131,16 +131,16 @@
           events[arguments[0]].listeners[i].apply(this, [].slice.call(arguments, 1));
     };
 
-    return Broadcaster;
+    return new Broadcaster();
   }())
 
   if(typeof module !== 'undefined' && module.exports)
-    module.exports = Broadcaster;
+    module.exports = broadcaster;
   else if(typeof define === 'function' && define.amd)
-    define('Broadcaster', function() { return Broadcaster });
+    define('broadcaster', function() { return broadcaster });
   else if(typeof provide === 'function')
-    provide('Broadcaster', Broadcaster);
+    provide('broadcaster', broadcaster);
   else
-    window.Broadcaster = Broadcaster;
+    window.broadcaster = broadcaster;
 
 }())
