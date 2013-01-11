@@ -127,11 +127,13 @@
      * @param {String|Number|Array|Object|Boolean} data The data to pass to listener functions
      */
 
-    Broadcaster.prototype.emit = function(event, data) {
+    Broadcaster.prototype.emit = function() {
+      var event = arguments[0];
       if(!events[event]) return;
+      [].splice.call(arguments, 0, 1);
       for(var i = 0, il = events[event].listeners.length; i < il; i++)
         if(typeof events[event].listeners[i] === 'function')
-          events[event].listeners[i](data);
+          events[event].listeners[i].apply(this, arguments);
     };
 
     return Broadcaster;
