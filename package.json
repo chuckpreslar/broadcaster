@@ -5,11 +5,11 @@
   "author": "Chuck Preslar <me@chuckpreslar.com> (http://www.chuckpreslar.com)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/chuckpreslar/link.git"
+    "url": "git://github.com/chuckpreslar/broadcaster.git"
   },
   "component": {
     "scripts": {
-      "link": "index.js"
+      "broadcaster": "index.js"
     }
   },
   "dependencies": {},
