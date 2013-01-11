@@ -36,7 +36,7 @@ describe('Broadcaster', function() {
     it('should remove the listener from the events `listener` list.', function(done) {
       var listener = function() {};
       broadcaster.on('removeListener', listener)
-      expect(broadcaster.removeListener(listener)).to.equal(true);
+      expect(toString.call(broadcaster.removeListener(listener))).to.equal('[object Array]');
       expect(broadcaster.listeners('removeListener').length).to.equal(0);
       done();
     });

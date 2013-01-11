@@ -68,15 +68,12 @@
     Broadcaster.prototype.removeListener = function(listener) {
       for(var event in events) {
         if(events.hasOwnProperty(event)) {
-          for(var i = 0, il = events[event].listeners.length; i < il; i ++) {
-            if(listener === events[event].listeners[i]) {
-              events[event].listeners.splice(i, 1);
-              return true;
-            }
-          }
+          var index = Math.abs(~events[event].listeners.indexOf(listener));
+          if(index)
+            return events[event].listeners.splice(index - 1, 1);
         }
       }
-      return false;
+      return undefined;
     };
 
     /**

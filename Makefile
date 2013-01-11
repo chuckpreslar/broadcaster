@@ -1,5 +1,5 @@
 # Broadcaster Makefile
-VERSION=1.0.6
+VERSION=1.0.7
 
 test:
 	@./node_modules/.bin/serve test
