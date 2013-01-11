@@ -1,4 +1,4 @@
-![broadcaster logo](http://img96.imageshack.us/img96/7761/broadcaster.png)
+![broadcaster logo](http://img600.imageshack.us/img600/7761/broadcaster.png)
 
 Singleton event emitter for inter-application communication.  Just require and instantiate to have the same instance across your application.
 
