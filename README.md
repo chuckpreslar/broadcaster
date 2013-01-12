@@ -1,6 +1,6 @@
 ![broadcaster logo](http://img600.imageshack.us/img600/7761/broadcaster.png)
 
-Singleton event emitter for inter-application communication.  Just require and instantiate to have the same instance across your application.
+Singleton event emitter for inter-application communication.  Just require to have the same instance across your application.
 
 
 ## Usage
@@ -18,5 +18,5 @@ And when ready to use:
 Ready for usage with [RequireJS](https://github.com/jrburke/requirejs) and [Ender](https://github.com/ender-js/Ender).
 
 ```js
-var emitter = require('broadcaster'); 
+var broadcaster = require('broadcaster'); 
 ```
