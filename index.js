@@ -65,7 +65,7 @@
      * @returns {Boolean} Success or failure of event listener removal
      */
 
-    Broadcaster.prototype.removeListener = function(listener) {
+    Broadcaster.prototype.removeListener = Broadcaster.prototype.off = function(listener) {
       for(var event in events) {
         if(events.hasOwnProperty(event)) {
           var index = Math.abs(~events[event].listeners.indexOf(listener));

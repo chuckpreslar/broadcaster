@@ -26,7 +26,7 @@ describe('Broadcaster', function() {
     });
   });
 
-  describe('#removeListener', function() {
+  describe('#removeListener, #off', function() {
     it('should remove the listener from the events `listener` list.', function(done) {
       var listener = function() {};
       broadcaster.on('removeListener', listener)
