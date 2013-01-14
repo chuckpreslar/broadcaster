@@ -3,6 +3,7 @@
   "description": "Singleton event emitter for inter-application communication.",
   "version": "1.0.9",
   "author": "Chuck Preslar <me@chuckpreslar.com> (http://www.chuckpreslar.com)",
+  "keywords": ["events", "event emitter", "application", "communication"],
   "repository": {
     "type": "git",
     "url": "git://github.com/chuckpreslar/broadcaster.git"
