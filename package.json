@@ -1,7 +1,7 @@
 {
   "name": "broadcaster",
   "description": "Singleton event emitter for inter-application communication.",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Chuck Preslar <me@chuckpreslar.com> (http://www.chuckpreslar.com)",
   "repository": {
     "type": "git",

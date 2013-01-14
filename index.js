@@ -51,8 +51,8 @@
 
     Broadcaster.prototype.once = function(event, listener) {
       var self = this;
-      return this.addListener(event, function wrapper(data) {
-        listener(data);
+      return this.addListener(event, function wrapper() {
+        listener.apply(this, arguments);
         self.removeListener(wrapper)
       });
     }
@@ -97,9 +97,8 @@
 
     Broadcaster.prototype.events = function() {
       var list = [];
-      for(var event in events) {
+      for(var event in events)
         list.push(event);
-      }
       return list;
     };
 
