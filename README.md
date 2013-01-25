@@ -19,4 +19,18 @@ Ready for usage with [RequireJS](https://github.com/jrburke/requirejs) and [Ende
 
 ```js
 var broadcaster = require('broadcaster');
+
+/**
+ * Register a listener.
+ */
+
+broadcaster.on('some:event', function(a, b, c, d) {
+  // Do something because some:event occured.
+});
+
+/**
+ * Now lets emit an event.
+ */
+
+broadcaster.emit('some:event', 1, 2, 3, 4);
 ```
