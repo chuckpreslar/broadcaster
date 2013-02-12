@@ -2,9 +2,7 @@
 
   var broadcaster = (function() {
 
-    /* Singleton instance of the Broadcaster */
-
-    var instance, events = {};
+    var events = {};
 
     /**
      * Event Broadcaster to be used for interapplication communication
@@ -13,11 +11,8 @@
      */
 
     function Broadcaster() {
-      if(typeof instance !== 'undefined' && instance !== null) 
-        return instance;
       if(!(this instanceof Broadcaster))
         return new Broadcaster();
-      instance = this;
     }
 
     /**

@@ -1,9 +1,0 @@
-{
-  "name": "broadcaster",
-  "description": "Singleton event emitter for inter-application communication.",
-  "version": "1.0.10",
-  "scripts": [
-    "index.js"
-  ],
-  "license": "MIT"
-}
